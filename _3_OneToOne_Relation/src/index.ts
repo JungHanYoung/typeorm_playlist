@@ -34,6 +34,7 @@ createConnection()
             res.json(timber);
       });
 
+      // 제거시 유저코드까지 한번에 제거됨.
       app.get('/deleteUser/timber', async (_, res) => {
             const timber = await User.findOne({ firstName: "Timber", lastName: "Saw" });
             if(timber) {
@@ -48,6 +49,7 @@ createConnection()
             }
       });
 
+      // 데이터 제거 불가능
       app.get('/deleteCode', async (_, res) => {
             const allUserCodes = await UserCode.find({});
             allUserCodes.forEach(async (userCode) => {
